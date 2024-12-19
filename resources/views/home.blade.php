@@ -68,26 +68,12 @@
                     </div>
                 </div>
             </section>
-        @endsection
-
-
-        @section('diagnosa')
-
-            <section class="bg-gray-100 p-6 py-24" id="diagnosa">
-                <div class="container mx-auto max-w-2xl p-4">
-                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 border rounded inline-block">
-                        Mulai Diagnosa
-                    </button>
-                </div>
-            </section>
-
 
             <div class="fixed bottom-6 left-6 z-50">
                 <a href="https://wa.me/6281375839812" target="_blank" class="bg-green-500 text-white flex items-center justify-center p-4 rounded-full shadow-lg hover:bg-green-600 transform animate-bounce duration-1000">
                     <i class="fab fa-whatsapp text-3xl"></i>
                 </a>
             </div>
-
         @endsection
 
     </body>

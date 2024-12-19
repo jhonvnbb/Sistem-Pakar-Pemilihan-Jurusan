@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Jurusan;
+use App\Models\MinatBakat;
 use Illuminate\Http\Request;
 
 class JurusanController extends Controller
@@ -15,30 +16,43 @@ class JurusanController extends Controller
 
     public function create()
     {
-        return view('admin.jurusan.create');
+        $minatBakat = MinatBakat::all();
+        return view('admin.jurusan.create', compact('minatBakat'));
     }
 
     public function store(Request $request)
     {
-        $request->validate([
-            'kode' => 'required|string|max:10',
+
+        $validated = $request->validate([
+            'kode' => 'required|unique:jurusans,kode',
             'nama' => 'required|string',
-            'kriteria' => 'required|array',
+            'kriteria' => 'required|array', 
+            'bobot' => 'required|array',
         ]);
-
+    
+        $kriteria = [];
+        foreach ($validated['kriteria'] as $index => $kode) {
+            if (isset($validated['bobot'][$index])) {
+                $kriteria[$kode] = (float) $validated['bobot'][$index];
+            }
+        }
+    
         Jurusan::create([
-            'kode' => $request->kode,
-            'nama' => $request->nama,
-            'kriteria' => json_encode($request->kriteria),
+            'kode' => $validated['kode'],
+            'nama' => $validated['nama'],
+            'kriteria' => json_encode($kriteria),
         ]);
-
-        return redirect()->route('jurusan.index')->with('success', 'Data berhasil ditambahkan.');
+    
+        return redirect()->route('admin.jurusan.index')->with('success', 'Jurusan berhasil ditambahkan!');
     }
+    
 
     public function edit($id)
     {
         $jurusan = Jurusan::findOrFail($id);
-        return view('admin.jurusan.edit', compact('jurusan'));
+        $minatBakat = MinatBakat::all(); 
+        $kriteria = json_decode($jurusan->kriteria, true);
+        return view('admin.jurusan.edit', compact('jurusan', 'minatBakat', 'kriteria'));
     }
 
     public function update(Request $request, $id)
@@ -47,21 +61,31 @@ class JurusanController extends Controller
             'kode' => 'required|string|max:10',
             'nama' => 'required|string',
             'kriteria' => 'required|array',
+            'bobot' => 'required|array',
         ]);
-
+    
         $jurusan = Jurusan::findOrFail($id);
+    
+        $kriteriaData = [];
+        foreach ($request->kriteria as $kode => $value) {
+            if (isset($request->bobot[$kode])) {
+                $kriteriaData[$kode] = (float) $request->bobot[$kode];
+            }
+        }
+    
         $jurusan->update([
             'kode' => $request->kode,
             'nama' => $request->nama,
-            'kriteria' => json_encode($request->kriteria),
+            'kriteria' => json_encode($kriteriaData),
         ]);
-
-        return redirect()->route('jurusan.index')->with('success', 'Data berhasil diperbarui.');
+   
+        return redirect()->route('admin.jurusan.index')->with('success', 'Data berhasil diperbarui.');
     }
+    
 
     public function destroy($id)
     {
         Jurusan::findOrFail($id)->delete();
-        return redirect()->route('jurusan.index')->with('success', 'Data berhasil dihapus.');
+        return redirect()->route('admin.jurusan.index')->with('success', 'Data berhasil dihapus.');
     }
 }
