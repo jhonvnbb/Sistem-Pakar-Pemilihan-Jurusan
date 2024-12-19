@@ -29,7 +29,6 @@
                                 <tr>
                                     <th class="px-6 py-3 text-left">Kode</th>
                                     <th class="px-6 py-3 text-left">Deskripsi</th>
-                                    <th class="px-6 py-3 text-left">Nilai MB</th>
                                     <th class="px-6 py-3 text-left">Aksi</th>
                                 </tr>
                             </thead>
@@ -38,7 +37,6 @@
                                     <tr class="border-b border-gray-200 dark:border-gray-600">
                                         <td class="px-6 py-4">{{ $item->kode }}</td>
                                         <td class="px-6 py-4">{{ $item->deskripsi }}</td>
-                                        <td class="px-6 py-4">{{ $item->nilai_mb }}</td>
                                         <td class="px-6 py-4">
                                             <a href="{{ route('admin.minat_bakat.edit', $item->id) }}" class="text-blue-500 hover:text-blue-700 mr-3">
                                                 <i class="fas fa-edit"></i> Edit

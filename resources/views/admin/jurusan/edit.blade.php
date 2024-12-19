@@ -33,6 +33,11 @@
                             <label for="nama" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Nama Jurusan</label>
                             <input type="text" id="nama" name="nama" value="{{ $jurusan->nama }}" class="mt-1 p-3 block w-full border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600" required>
                         </div>
+                        
+                        <div class="mb-5">
+                            <label for="deskripsi" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Deskripsi Jurusan</label>
+                            <input type="text" id="deskripsi" name="deskripsi" value="{{ $jurusan->deskripsi }}" class="mt-1 p-3 block w-full border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600" required>
+                        </div>
 
                         <div class="mb-6">
                             <label for="kriteria" class="block text-sm font-medium text-gray-700">Pilih Kriteria</label>
