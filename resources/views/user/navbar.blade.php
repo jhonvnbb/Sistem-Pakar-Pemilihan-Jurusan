@@ -18,7 +18,7 @@
             <a href="/#about" class="text-white hover:text-yellow-400 transition-all duration-300 text-lg font-medium">About</a>
 
             @auth 
-            <a href="/#diagnosa" class="text-white hover:text-yellow-400 transition-all duration-300 text-lg font-medium">Diagnosa</a>
+            <a href="{{ route('diagnosa.index') }}" class="text-white hover:text-yellow-400 transition-all duration-300 text-lg font-medium">Diagnosa</a>
             @endauth
 
             @if (Route::has('login'))

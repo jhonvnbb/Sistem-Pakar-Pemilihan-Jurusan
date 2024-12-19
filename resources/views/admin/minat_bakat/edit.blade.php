@@ -1,7 +1,22 @@
-@extends('layouts.admin')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Admin</title>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
 
-@section('content')
-<div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+    <x-app-layout>
+        <div x-data="{ open: false }" class="flex h-screen">
+            <!-- Sidebar -->
+            @include('admin.sidebar')
+
+            <!-- Main Content -->
+            <div :class="open ? 'ml-64' : 'ml-16'" class="flex-1 p-6 transition-all duration-300">
+            <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md">
     <h1 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4">Edit Data Minat Bakat</h1>
 
     <form action="{{ route('admin.minat_bakat.update', $minatBakat->id) }}" method="POST">
@@ -28,4 +43,9 @@
         </button>
     </form>
 </div>
-@endsection
+            </div>
+        </div>
+    </x-app-layout>
+
+</body>
+</html>

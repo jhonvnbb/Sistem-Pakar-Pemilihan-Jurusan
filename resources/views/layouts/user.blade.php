@@ -18,10 +18,6 @@
 
         @yield('about')
 
-        @auth
-        @yield('diagnosa')
-        @endauth
-
         @include('user.footer')
     </div>
 

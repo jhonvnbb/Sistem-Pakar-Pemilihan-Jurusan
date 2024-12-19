@@ -27,7 +27,7 @@ class MinatBakatController extends Controller
         ]);
 
         MinatBakat::create($request->all());
-        return redirect()->route('minat_bakat.index')->with('success', 'Data berhasil ditambahkan.');
+        return redirect()->route('admin.minat_bakat.index')->with('success', 'Data berhasil ditambahkan.');
     }
 
     public function edit($id)
@@ -47,12 +47,12 @@ class MinatBakatController extends Controller
         $minatBakat = MinatBakat::findOrFail($id);
         $minatBakat->update($request->all());
 
-        return redirect()->route('minat_bakat.index')->with('success', 'Data berhasil diperbarui.');
+        return redirect()->route('admin.minat_bakat.index')->with('success', 'Data berhasil diperbarui.');
     }
 
     public function destroy($id)
     {
         MinatBakat::findOrFail($id)->delete();
-        return redirect()->route('minat_bakat.index')->with('success', 'Data berhasil dihapus.');
+        return redirect()->route('admin.minat_bakat.index')->with('success', 'Data berhasil dihapus.');
     }
 }

@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MinatBakatController;
 use App\Http\Controllers\JurusanController;
+use App\Http\Controllers\DiagnosaController;
 
 Route::get('/', function () {
     return view('home');
@@ -19,6 +20,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/diagnosa', [DiagnosaController::class, 'index'])->name('diagnosa.index');
+    Route::post('/diagnosa/proses', [DiagnosaController::class, 'prosesDiagnosa'])->name('diagnosa.proses');
+
 });
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
