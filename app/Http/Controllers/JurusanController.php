@@ -26,6 +26,7 @@ class JurusanController extends Controller
         $validated = $request->validate([
             'kode' => 'required|unique:jurusans,kode',
             'nama' => 'required|string',
+            'deskripsi' => 'required|string',
             'kriteria' => 'required|array', 
             'bobot' => 'required|array',
         ]);
@@ -40,6 +41,7 @@ class JurusanController extends Controller
         Jurusan::create([
             'kode' => $validated['kode'],
             'nama' => $validated['nama'],
+            'deskripsi' => $validated['deskripsi'],
             'kriteria' => json_encode($kriteria),
         ]);
     
@@ -60,6 +62,7 @@ class JurusanController extends Controller
         $request->validate([
             'kode' => 'required|string|max:10',
             'nama' => 'required|string',
+            'deskripsi' => 'required|string',
             'kriteria' => 'required|array',
             'bobot' => 'required|array',
         ]);
@@ -76,6 +79,7 @@ class JurusanController extends Controller
         $jurusan->update([
             'kode' => $request->kode,
             'nama' => $request->nama,
+            'deskripsi' => $request->deskripsi,
             'kriteria' => json_encode($kriteriaData),
         ]);
    

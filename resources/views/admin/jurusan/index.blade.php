@@ -28,6 +28,7 @@
                 <tr>
                     <th class="px-6 py-3 text-left">Kode</th>
                     <th class="px-6 py-3 text-left">Nama Jurusan</th>
+                    <th class="px-6 py-3 text-left">Deskripsi</th>
                     <th class="px-6 py-3 text-left">Kriteria</th>
                     <th class="px-6 py-3 text-left">Aksi</th>
                 </tr>
@@ -37,6 +38,7 @@
                     <tr class="border-b border-gray-200 dark:border-gray-600">
                         <td class="px-6 py-4">{{ $jurusan->kode }}</td>
                         <td class="px-6 py-4">{{ $jurusan->nama }}</td>
+                        <td class="px-6 py-4">{{ $jurusan->deskripsi }}</td>
                         <td class="px-6 py-4">{{ json_encode($jurusan->kriteria) }}</td>
                         <td class="px-6 py-4">
                             <!-- Edit Button -->

@@ -23,7 +23,6 @@ class MinatBakatController extends Controller
         $request->validate([
             'kode' => 'required|string|max:10',
             'deskripsi' => 'required|string',
-            'nilai_mb' => 'required|numeric|min:0|max:1',
         ]);
 
         MinatBakat::create($request->all());
@@ -40,8 +39,7 @@ class MinatBakatController extends Controller
     {
         $request->validate([
             'kode' => 'required|string|max:10',
-            'deskripsi' => 'required|string',
-            'nilai_mb' => 'required|numeric|min:0|max:1',
+            'deskripsi' => 'required|string',   
         ]);
 
         $minatBakat = MinatBakat::findOrFail($id);

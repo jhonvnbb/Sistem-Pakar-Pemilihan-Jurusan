@@ -34,6 +34,13 @@
                                 class="p-3 w-full rounded-md border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-blue-600 focus:outline-none dark:bg-gray-700 dark:text-white shadow-sm" 
                                 required>
                         </div>
+                        
+                        <div class="mb-5">
+                            <label for="deskripsi" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Deskripsi Jurusan</label>
+                            <input type="text" id="deskripsi" name="deskripsi" 
+                                class="p-3 w-full rounded-md border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-blue-600 focus:outline-none dark:bg-gray-700 dark:text-white shadow-sm" 
+                                required>
+                        </div>
 
                         <div class="mb-4">
                             <label for="kriteria" class="block text-sm font-medium text-gray-700">Pilih Kriteria</label>
