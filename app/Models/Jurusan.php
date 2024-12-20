@@ -6,18 +6,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class Jurusan extends Model
 {
-        // Tentukan nama tabel jika berbeda dengan nama model
-        protected $table = 'jurusans'; // Nama tabel di database
+        protected $table = 'jurusans';
 
-        // Kolom-kolom yang dapat diisi
         protected $fillable = [
             'kode',
             'nama',
+            'deskripsi',
             'kriteria',
         ];
     
-        // Menggunakan accessor untuk kriteria yang disimpan dalam format JSON
         protected $casts = [
-            'kriteria' => 'array',  // Agar kriteria dapat diakses sebagai array
+            'kriteria' => 'array',
         ];
+        public function rules()
+        {
+            return $this->hasMany(Rule::class, 'kode_jurusan', 'kode');
+        }
+
 }

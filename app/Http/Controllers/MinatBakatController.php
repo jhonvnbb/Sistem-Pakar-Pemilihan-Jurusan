@@ -7,9 +7,16 @@ use Illuminate\Http\Request;
 
 class MinatBakatController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $data = MinatBakat::all();
+        $search = $request->input('search');
+
+        $data = MinatBakat::when($search, function ($query, $search) {
+            return $query->where('kode', 'like', "%{$search}%")
+                        ->orWhere('deskripsi', 'like', "%{$search}%")
+                        ->orWhere('deskripsi', 'like', "%{$search}%");        
+                    })
+                    ->paginate(5);
         return view('admin.minat_bakat.index', compact('data'));
     }
 
@@ -23,6 +30,7 @@ class MinatBakatController extends Controller
         $request->validate([
             'kode' => 'required|string|max:10',
             'deskripsi' => 'required|string',
+            'detail' => 'required|string',
         ]);
 
         MinatBakat::create($request->all());
@@ -40,6 +48,7 @@ class MinatBakatController extends Controller
         $request->validate([
             'kode' => 'required|string|max:10',
             'deskripsi' => 'required|string',   
+            'detail' => 'required|string',   
         ]);
 
         $minatBakat = MinatBakat::findOrFail($id);
