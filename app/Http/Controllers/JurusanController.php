@@ -8,16 +8,25 @@ use Illuminate\Http\Request;
 
 class JurusanController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $data = Jurusan::all();
-        return view('admin.jurusan.index', compact('data'));
+        $search = $request->input('search');
+        $minatBakat = MinatBakat::all();
+
+        $data = Jurusan::when($search, function ($query, $search) {
+            return $query->where('nama', 'like', "%{$search}%")
+                        ->orWhere('kode', 'like', "%{$search}%")
+                        ->orWhere('deskripsi', 'like', "%{$search}%");
+        })->paginate(5);
+
+        return view('admin.jurusan.index', compact('data', 'minatBakat'));
     }
 
     public function create()
     {
         $minatBakat = MinatBakat::all();
-        return view('admin.jurusan.create', compact('minatBakat'));
+        $lastCode = Jurusan::latest('kode')->first()->kode ?? 'J00'; // Ambil kode terakhir atau default 'J00'
+        return view('admin.jurusan.create', compact('minatBakat', 'lastCode'));
     }
 
     public function store(Request $request)
@@ -47,14 +56,13 @@ class JurusanController extends Controller
     
         return redirect()->route('admin.jurusan.index')->with('success', 'Jurusan berhasil ditambahkan!');
     }
-    
 
     public function edit($id)
     {
         $jurusan = Jurusan::findOrFail($id);
         $minatBakat = MinatBakat::all(); 
         $kriteria = json_decode($jurusan->kriteria, true);
-        return view('admin.jurusan.edit', compact('jurusan', 'minatBakat', 'kriteria'));
+        return view('admin.jurusan.edit', compact('jurusan', 'minatBakat','kriteria'));
     }
 
     public function update(Request $request, $id)
@@ -66,23 +74,23 @@ class JurusanController extends Controller
             'kriteria' => 'required|array',
             'bobot' => 'required|array',
         ]);
-    
+
         $jurusan = Jurusan::findOrFail($id);
-    
+
         $kriteriaData = [];
-        foreach ($request->kriteria as $kode => $value) {
+        foreach ($request->kriteria as $kode) {
             if (isset($request->bobot[$kode])) {
                 $kriteriaData[$kode] = (float) $request->bobot[$kode];
             }
         }
-    
+
         $jurusan->update([
             'kode' => $request->kode,
             'nama' => $request->nama,
             'deskripsi' => $request->deskripsi,
             'kriteria' => json_encode($kriteriaData),
         ]);
-   
+
         return redirect()->route('admin.jurusan.index')->with('success', 'Data berhasil diperbarui.');
     }
     

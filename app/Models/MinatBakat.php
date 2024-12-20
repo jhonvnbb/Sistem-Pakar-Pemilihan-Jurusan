@@ -4,15 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class MinatBakat extends Model
 {
-        // Tentukan nama tabel jika berbeda dengan nama model
-        protected $table = 'minat_bakats'; // Sesuaikan dengan nama tabel di database
+        protected $table = 'minat_bakats';
 
-        // Kolom-kolom yang dapat diisi
         protected $fillable = [
             'kode',
             'deskripsi',
-            'nilai_mb'
+            'detail',
         ];
+
+        public function rules()
+        {
+            return $this->hasMany(Rule::class, 'kode_minat_bakat', 'kode');
+        }
+
 }

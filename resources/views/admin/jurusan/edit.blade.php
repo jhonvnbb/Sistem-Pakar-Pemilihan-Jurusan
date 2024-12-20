@@ -24,57 +24,87 @@
                         @csrf
                         @method('PUT')
 
-                        <div class="mb-5">
-                            <label for="kode" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Kode</label>
-                            <input type="text" id="kode" name="kode" value="{{ $jurusan->kode }}" class="mt-1 p-3 block w-full border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600" required>
-                        </div>
-
-                        <div class="mb-5">
-                            <label for="nama" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Nama Jurusan</label>
-                            <input type="text" id="nama" name="nama" value="{{ $jurusan->nama }}" class="mt-1 p-3 block w-full border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600" required>
-                        </div>
-                        
-                        <div class="mb-5">
-                            <label for="deskripsi" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Deskripsi Jurusan</label>
-                            <input type="text" id="deskripsi" name="deskripsi" value="{{ $jurusan->deskripsi }}" class="mt-1 p-3 block w-full border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600" required>
-                        </div>
-
+                        <!-- Kode -->
                         <div class="mb-6">
-                            <label for="kriteria" class="block text-sm font-medium text-gray-700">Pilih Kriteria</label>
-                            <div id="kriteria-list">
-                                @foreach ($minatBakat as $item)
-                                <div class="flex items-center space-x-4 mb-2">
-                                    <input 
-                                        type="checkbox" 
-                                        id="kriteria_{{ $item->kode }}" 
-                                        name="kriteria[{{ $item->kode }}]" 
-                                        value="{{ $item->kode }}" 
-                                        class="form-checkbox h-5 w-5" 
-                                        @if(isset($kriteria[$item->kode])) checked @endif
-                                    >
-                                    <label for="kriteria_{{ $item->kode }}" class="text-gray-700">{{ $item->deskripsi }}</label>
+                            <label for="kode" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Kode</label>
+                            <input 
+                                type="text" 
+                                id="kode" 
+                                name="kode" 
+                                value="{{ $jurusan->kode }}" 
+                                class="p-3 w-full rounded-lg border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-blue-600 focus:outline-none dark:bg-gray-700 dark:text-white shadow-sm transition" 
+                                placeholder="Masukkan kode jurusan"
+                                readonly>
+                        </div>
 
-                                    <select 
-                                        name="bobot[{{ $item->kode }}]" 
-                                        class="form-select h-8 w-20 border rounded-md">
-                                        <option value="0.0" @if(isset($kriteria[$item->kode]) && $kriteria[$item->kode] == 0.0) selected @endif>0.0</option>
-                                        <option value="0.2" @if(isset($kriteria[$item->kode]) && $kriteria[$item->kode] == 0.2) selected @endif>0.2</option>
-                                        <option value="0.4" @if(isset($kriteria[$item->kode]) && $kriteria[$item->kode] == 0.4) selected @endif>0.4</option>
-                                        <option value="0.6" @if(isset($kriteria[$item->kode]) && $kriteria[$item->kode] == 0.6) selected @endif>0.6</option>
-                                        <option value="0.8" @if(isset($kriteria[$item->kode]) && $kriteria[$item->kode] == 0.8) selected @endif>0.8</option>
-                                        <option value="1.0" @if(isset($kriteria[$item->kode]) && $kriteria[$item->kode] == 1.0) selected @endif>1.0</option>
-                                    </select>
-                                </div>
+                        <!-- Nama -->
+                        <div class="mb-6">
+                            <label for="nama" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Nama Jurusan</label>
+                            <input 
+                                type="text" 
+                                id="nama" 
+                                name="nama" 
+                                value="{{ $jurusan->nama }}" 
+                                class="p-3 w-full rounded-lg border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-blue-600 focus:outline-none dark:bg-gray-700 dark:text-white shadow-sm transition" 
+                                placeholder="Masukkan nama jurusan"
+                                required>
+                        </div>
+
+                        <!-- Deskripsi -->
+                        <div class="mb-6">
+                            <label for="deskripsi" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Deskripsi Jurusan</label>
+                            <textarea 
+                                id="deskripsi" 
+                                name="deskripsi" 
+                                class="p-3 w-full rounded-lg border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-blue-600 focus:outline-none dark:bg-gray-700 dark:text-white shadow-sm transition" 
+                                rows="4"
+                                placeholder="Masukkan deskripsi jurusan"
+                                required>{{ $jurusan->deskripsi }}</textarea>
+                        </div>
+
+                        <!-- Pilih Kriteria -->
+                        <div class="mb-6">
+                            <label for="kriteria" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-4">Pilih Kriteria</label>
+                            <div id="kriteria-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                @foreach ($minatBakat as $item)
+                                    <div class="p-4 bg-gray-100 dark:bg-gray-700 rounded-lg shadow hover:shadow-lg transition border border-gray-300 dark:border-gray-600">
+                                        <div class="flex items-center space-x-4 mb-3">
+                                            <!-- Checkbox Kriteria -->
+                                            <input 
+                                                type="checkbox" 
+                                                id="kriteria_{{ $item->kode }}" 
+                                                name="kriteria[{{ $item->kode }}]" 
+                                                value="{{ $item->kode }}" 
+                                                class="h-5 w-5 text-blue-600 border-gray-300 focus:ring-2 focus:ring-blue-600"
+                                                @if(isset($kriteria[$item->kode])) checked @endif>
+                                            <label for="kriteria_{{ $item->kode }}" class="text-sm font-medium text-gray-700 dark:text-gray-300">
+                                                {{ $item->deskripsi }}
+                                            </label>
+                                        </div>
+                                        <!-- Dropdown Bobot -->
+                                        <select 
+                                            name="bobot[{{ $item->kode }}]" 
+                                            class="w-full h-9 rounded-md border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-blue-600 dark:bg-gray-700 dark:text-white">
+                                            @foreach ([0.0, 0.2, 0.4, 0.6, 0.8, 1.0] as $bobot)
+                                                <option value="{{ $bobot }}" 
+                                                    @if(isset($kriteria[$item->kode]) && $kriteria[$item->kode] == $bobot) selected @endif>
+                                                    {{ $bobot }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 @endforeach
                             </div>
                         </div>
 
-                        <button type="submit" class="bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 transition duration-300">
+                        <!-- Submit Button -->
+                        <button type="submit" class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition duration-300">
                             <i class="fas fa-edit mr-2"></i> Perbarui Data
                         </button>
                     </form>
                 </div>
             </div>
+
         </div>
     </x-app-layout>
 

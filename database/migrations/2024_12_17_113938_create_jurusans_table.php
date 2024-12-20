@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('kode');
             $table->string('nama');
-            $table->json('kriteria'); // JSON untuk kriteria
+            $table->json('kriteria');
             $table->timestamps();
         });
     }
