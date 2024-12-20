@@ -11,17 +11,20 @@
 
         @section('banner')
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-            <section class="bg-[#eee] pt-52 pb-20">
+            <section class="bg-[#004643] pt-44 pb-20">
                 <div class="container mx-auto flex flex-col items-center justify-center p-6">
                     <div class="w-full md:w-1/2 flex justify-center mb-6 md:mb-0">
                         <x-application-logo class="w-44 h-auto fill-current text-black" />
                     </div>
                     <div class="w-full md:w-1/2 text-center mt-12">
-                        <h1 class="text-4xl md:text-5xl font-extrabold text-gray-800">
-                            Dare to Dream, Strive for Greatness
+                        <h1 class="text-4xl md:text-5xl font-extrabold text-[#fffffe]">
+                            Temukan Jurusan Terbaik untuk Masa Depan Anda!
                         </h1>
+                        <p class="mt-8 text-[#abd1c6] text-lg md:text-xl">
+                            Kamu lagi bingung jurusan apa yang mau kamu ambil? Ayoo, eksplor minat dan bakat kamu, lalu temukan jurusan yang paling pas bareng sistem pakar ini!
+                        </p>
                         <div class="mt-10">
-                            <a href="#about" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 border rounded inline-block">
+                            <a href="#about" class="bg-[#f9bc60] hover:bg-[#abd1c6] text-black font-bold py-2 px-6 border-2 border-black rounded inline-block">
                                 Get Started
                             </a>
                         </div>
@@ -31,34 +34,33 @@
         @endsection
 
         @section('about') 
-            <section class="bg-gray-800 p-6 py-24" id="about">
+            <section class="bg-[#abd1c6] p-6 py-24" id="about">
                 <div class="container mx-auto flex flex-col justify-center items-center px-4 py-10">
                     <div class="relative flex flex-col items-center justify-center mt-4 mb-10">
-                        <h1 class="absolute text-6xl md:text-8xl font-extrabold text-gray-300 opacity-25 select-none">
+                        <h1 class="absolute text-6xl md:text-8xl font-extrabold text-[#004643] opacity-25 select-none">
                             About
                         </h1>
-                        <h1 class="relative text-2xl md:text-4xl font-extrabold text-white">
+                        <h1 class="relative text-2xl md:text-4xl font-extrabold text-[#004643]">
                             About Us
                         </h1>
                     </div>
-                    <div class="text-white">
+                    <div class="text-[#0f3433[">
                         <h1 class="text-2xl font-bold mb-4">Apa itu Expert System ?</h1>
                         <p class="text-justify">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam tenetur reiciendis, pariatur aliquid saepe aliquam ipsa quod est fugiat ex nam sed dolorem magni quasi repellendus et harum consectetur quas commodi cum delectus officiis? Eos, eligendi. Id voluptas, voluptate, blanditiis laudantium eveniet odio enim libero nemo facere explicabo, aperiam accusantium!
+                        Expert system (sistem pakar) adalah salah satu cabang kecerdasan buatan (AI) yang dirancang untuk meniru kemampuan pengambilan keputusan seorang ahli dalam suatu bidang tertentu. Sistem ini menggunakan basis pengetahuan (knowledge base) dan aturan logika (inference engine) untuk menganalisis data, memberikan solusi, atau memberikan rekomendasi berdasarkan masalah yang dihadapi.
                         </p>
                         <p class="text-justify">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum, id voluptate. Veniam nesciunt excepturi ducimus ab, impedit maxime minima dignissimos laborum esse perspiciatis accusamus eveniet doloribus vel necessitatibus atque et nostrum mollitia. Nulla omnis perferendis provident esse earum blanditiis ad alias! Pariatur nemo sequi corrupti, quibusdam provident accusantium voluptatem molestias?
+                        Sistem pakar adalah program komputer yang meniru kemampuan pengambilan keputusan seorang ahli dalam bidang tertentu. Sistem ini memanfaatkan basis pengetahuan dan mesin inferensi untuk menganalisis data dan memberikan solusi atau rekomendasi.
                         </p>
                     </div>
-                    <div class="flex flex-col lg:flex-row lg:justify-between w-full mt-7 text-white">
+                    <div class="flex flex-col lg:flex-row lg:justify-between w-full mt-7 text-[#0f3433]">
                         <div class="md:w-1/2">
-                            <h1 class="text-2xl font-bold mb-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia, dignissimos.</h1>
+                            <h1 class="text-2xl font-bold mb-4">Komponen Utama Expert System:</h1>
                             <div class="mb-10">
                                 <ul class="text-justify list-disc px-4">
-                                    <li>Lorem, ipsum.</li>
-                                    <li>Lorem, ipsum.</li>
-                                    <li>Lorem, ipsum dolor.</li>
-                                    <li>Lorem, ipsum dolor.</li>
+                                    <li>Basis Pengetahuan (Knowledge Base)</li>
+                                    <li>Mesin Inferensi (Inference Engine):</li>
+                                    <li>Antarmuka Pengguna (User Interface):</li>
                                 </ul>
                             </div>
                         </div>

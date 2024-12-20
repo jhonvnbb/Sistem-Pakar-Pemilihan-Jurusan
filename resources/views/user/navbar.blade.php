@@ -1,4 +1,4 @@
-<nav class="bg-gray-800 shadow-lg p-4 md:p-6 fixed top-0 left-0 w-full z-50">
+<nav class="bg-[#f9bc60] shadow-lg p-4 md:p-6 fixed top-0 left-0 w-full z-50">
     <div class="container mx-auto flex justify-between items-center">
         <!-- Logo -->
         <div>
@@ -7,18 +7,18 @@
 
         <!-- Mobile Toggle Button -->
         <div class="md:hidden">
-            <button onclick="toggleMenu()" class="text-white focus:outline-none hover:text-yellow-400 transition-transform transform hover:scale-110 duration-300">
+            <button onclick="toggleMenu()" class="text-white focus:outline-none hover:text-black transition-transform transform hover:scale-110 duration-300">
                 <i id="toggle-icon" class="fas fa-bars text-2xl"></i>
             </button>
         </div>
 
         <!-- Desktop Links -->
         <div class="hidden md:flex items-center space-x-8">
-            <a href="/" class="text-white hover:text-yellow-400 transition-all duration-300 text-lg font-medium">Home</a>
-            <a href="/#about" class="text-white hover:text-yellow-400 transition-all duration-300 text-lg font-medium">About</a>
+            <a href="/" class="text-white hover:text-black transition-all duration-300 text-lg font-medium">Home</a>
+            <a href="/#about" class="text-white hover:text-black transition-all duration-300 text-lg font-medium">About</a>
 
             @auth 
-            <a href="{{ route('diagnosa.index') }}" class="text-white hover:text-yellow-400 transition-all duration-300 text-lg font-medium">Diagnosa</a>
+            <a href="{{ route('diagnosa.index') }}" class="text-white hover:text-black transition-all duration-300 text-lg font-medium">Diagnosa</a>
             @endauth
 
             @if (Route::has('login'))
